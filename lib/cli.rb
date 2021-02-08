@@ -1,16 +1,14 @@
 class Cli
 
 def welcome
-    puts "Welcome to the Near Earth Object app."
-    self.prompt_for_dates
+    puts "Welcome to the weather app."
+    self.prompt_for_zipcode
 end
 
-def prompt_for_dates
-    puts "Enter start date. (YYYY-MM-DD)"
+def prompt_for_zipcode
+    puts "Enter zipcode"
     input = gets.strip
-    puts "Enter end date. (YYYY-MM-DD)"
-    input = gets.strip
-    Api.get_info_by_dates
+    new_location = Api.get_info(input)
     #do sum with info
 end
 

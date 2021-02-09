@@ -37,6 +37,26 @@ def user_choice(location)
         puts "That is not an option."
         self.weather_options(location)
     end
+    self.main_menu
 end
+
+def main_menu
+puts "To see another location's weather, enter 1."
+puts "To exit program, enter 2."
+input = gets.strip
+    if input == "1"
+        self.prompt_for_zipcode
+    elsif input == "2"
+        self.exit_app
+    else
+      puts "That is not an option."
+      self.main_menu
+    end
+end
+
+def exit_app
+    abort("Exiting weather app.")
+end
+
 
 end

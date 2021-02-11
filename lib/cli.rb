@@ -6,16 +6,18 @@ def welcome
 end
 
 def prompt_for_zipcode
-    puts "Enter zipcode"
+ new_location = false
+ while !new_location
+    puts "Enter ZIP code."
     input = gets.strip
-    new_location = Api.get_info(input)
-    if new_location
-    self.weather_options(new_location)
-    else
-    puts "That zipcode is invalid."
-    self.prompt_for_zipcode
-    end
+    new_location = Location.find_by_zip(input) || Api.get_weather_by_zip(input)
+    if !new_location
+        puts "That zip code was invalid."
+      end
+  end
+  self.weather_options(new_location)
 end
+
 
 def weather_options(location)
     puts "Choose from one of the numbers in the following list for weather information in #{location.name}."

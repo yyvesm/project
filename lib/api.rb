@@ -13,7 +13,7 @@ class Api
         return nil
     end
 
-    weather_hash = {name: response["name"], temp: response["main"]["temp"], feels_like: response["main"]["feels_like"], weather: response["weather"][0]["description"]}
+    weather_hash = {zip_code: zip, name: response["name"], temp: response["main"]["temp"], feels_like: response["main"]["feels_like"], weather: response["weather"][0]["description"]}
     Location.new(weather_hash)
     end
 
